@@ -9,9 +9,8 @@ class Invoice {
     private Organization mRecipient
     private BankingInfo mBankingInfo
 
-    private List<InvoiceItem> mItems
+    static hasMany=[mItems:InvoiceItem, mNotes:String]
     private float mSum
-    private List<String> mNotes
 
     private InvoiceStatus mStatus
     private Currency mCurrency
