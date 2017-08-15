@@ -1,14 +1,19 @@
 package invoimo.invoices.items
 
+import invoimo.invoices.Invoice
+
 abstract class InvoiceItem {
 
     final private Currency mCurrency
     final private float mAmount
     private float mCount
     private boolean mIsDiscount = false
+    private boolean mIsTaxable = false
+    private float mTaxRate
     private String mDescription
     private Date mProgressDate
     private Date mFinalizeDate
+    static belongsTo=[mInvoice:Invoice]
 
     static constraints = {
         mCurrency(nullable:false)
