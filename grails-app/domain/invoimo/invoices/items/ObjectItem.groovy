@@ -2,10 +2,10 @@ package invoimo.invoices.items
 
 class ObjectItem extends InvoiceItem{
 
-    private String mName
+    private String name
 
     static constraints = {
-        mName(nullable:false, size:3..100)
+        name(nullable:false, size:3..100)
     }
 
     ObjectItem(final float aAmount, final Currency aCurrency, final String aName) {
@@ -14,6 +14,6 @@ class ObjectItem extends InvoiceItem{
 
     ObjectItem(float aAmount, Currency aCurrency, final String aName, float aCount) {
         super(aAmount, aCurrency, aCount)
-        mName = aName
+        name = aName
     }
 }

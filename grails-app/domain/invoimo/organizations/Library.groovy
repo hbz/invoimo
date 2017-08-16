@@ -4,30 +4,30 @@ import invoimo.helpers.SettingsChecker
 
 class Library {
 
-    private String mIsil
-    private String mDbsId
+    private String isil
+    private String dbsId
 
     static constraints = {
-        mIsil(nullable:false)
-        mDbsId(nullable:false)
+        isil(nullable:false)
+        dbsId(nullable:false)
     }
 
     // TODO: libraries without isil AND dbsid? (foreign?)
 
     Library (String aIsil, String aDbsId){
-        mIsil = aIsil
-        mDbsId = aDbsId
+        isil = aIsil
+        dbsId = aDbsId
     }
 
     void setIsil(String aIsil){
-        if (SettingsChecker.canBeOverwrittenByString(mIsil, aIsil)){
-            mIsil = aIsil
+        if (SettingsChecker.canBeOverwrittenByString(isil, aIsil)){
+            isil = aIsil
         }
     }
 
     void setDbsId(String aDbsId){
-        if (SettingsChecker.canBeOverwrittenByString(mDbsId, aDbsId)){
-            mDbsId = aDbsId
+        if (SettingsChecker.canBeOverwrittenByString(dbsId, aDbsId)){
+            dbsId = aDbsId
         }
     }
 }

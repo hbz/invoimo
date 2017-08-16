@@ -2,24 +2,24 @@ package invoimo.invoices.items
 
 import invoimo.invoices.Invoice
 
-abstract class InvoiceItem {
+class InvoiceItem {
 
-    final private Currency mCurrency
-    final private float mAmount
-    private float mCount
-    private boolean mIsDiscount = false
-    private boolean mIsTaxable = false
-    private float mTaxRate
-    private String mDescription
-    private Date mProgressDate
-    private Date mFinalizeDate
-    static belongsTo=[mInvoice:Invoice]
+    final private Currency currency
+    final private float amount
+    private float number
+    private boolean isDiscount = false
+    private boolean isTaxable = false
+    private float taxRate
+    private String description
+    private Date progressDate
+    private Date finalizeDate
+    static belongsTo=[invoice:Invoice]
 
     static constraints = {
-        mCurrency(nullable:false)
-        mAmount(min:0.0, nullable:false)
-        mCount(min:0.0)
-        mDescription(size:3..100)
+        currency(nullable:false)
+        amount(min:0.0, nullable:false)
+        number(min:0.0)
+        description(size:3..100)
     }
 
     protected InvoiceItem(final float aAmount, final Currency aCurrency) {
@@ -35,38 +35,38 @@ abstract class InvoiceItem {
     }
 
     protected InvoiceItem(final float aAmount, final Currency aCurrency, final float aCount, final boolean aIsDiscount){
-        mCurrency = aCurrency
-        mAmount = aAmount
-        mCount = aCount
-        mIsDiscount = aIsDiscount
-        mProgressDate = new Date()
+        currency = aCurrency
+        amount = aAmount
+        number = aCount
+        isDiscount = aIsDiscount
+        progressDate = new Date()
     }
 
     void setDescription(String aDescription) {
-        mDescription = aDescription
+        description = aDescription
     }
 
     boolean isFinalized() {
-        return mFinalizeDate != null
+        return finalizeDate != null
     }
 
     boolean setFinalized() {
         if (isFinalized()) {
             return false
         }
-        mFinalizeDate = new Date()
+        finalizeDate = new Date()
         return true
     }
 
     Date getProgressDate(){
-        return mProgressDate
+        return progressDate
     }
 
     Date getFinalizeDate() {
-        return mFinalizeDate
+        return finalizeDate
     }
 
     float getAmount() {
-        return mAmount
+        return amount
     }
 }

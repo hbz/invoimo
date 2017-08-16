@@ -7,10 +7,10 @@ class LicenseItem extends InvoiceItem{
     static constraints = {
     }
 
-    private License mLicense
+    private License license
 
     LicenseItem(final float aAmount, final Currency aCurrency, final License aLicense) {
         super(aAmount, aCurrency)
-        mLicense = aLicense
+        license = aLicense
     }
 }

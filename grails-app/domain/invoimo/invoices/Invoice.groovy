@@ -5,26 +5,26 @@ import invoimo.organizations.Organization
 
 class Invoice {
 
-    private Organization mIssuer
-    private Organization mRecipient
-    private BankingInfo mBankingInfo
+    private Organization issuer
+    private Organization recipient
+    private BankingInfo bankingInfo
 
-    static hasMany=[mItems:InvoiceItem, mNotes:String]
-    private float mSum
+    static hasMany=[items:InvoiceItem, notes:String]
+    private float sum
 
-    private InvoiceStatus mStatus
-    private Currency mCurrency
-    private Date mMaturity
+    private InvoiceStatus status
+    private Currency currency
+    private Date maturity
 
-    private Date mProgressDate
-    private Date mFinalizeDate
+    private Date progressDate
+    private Date finalizeDate
 
     static constraints = {
     }
 
     protected Invoice(){
-        mProgressDate = new Date()
-        mSum = 0.0f
+        progressDate = new Date()
+        sum = 0.0f
     }
 
     enum InvoiceType{
@@ -36,41 +36,41 @@ class Invoice {
     }
 
     InvoiceStatus getStatus() {
-        return mStatus;
+        return status;
     }
 
     boolean isFinalized() {
-        return mFinalizeDate != null;
+        return finalizeDate != null;
     }
 
     boolean setFinalized() {
         if (isFinalized()) {
             return false
         }
-        mFinalizeDate = new Date()
-        for (InvoiceItem item : mItems){
+        finalizeDate = new Date()
+        for (InvoiceItem item : items){
             item.setFinalized()
         }
         return true
     }
 
     Date getProgressDate(){
-        return mProgressDate
+        return progressDate
     }
 
     Date getFinalizeDate(){
-        return mFinalizeDate
+        return finalizeDate
     }
 
     void addItem(InvoiceItem aInvoiceItem){
-        mItems.add(aInvoiceItem)
+        items.add(aInvoiceItem)
     }
 
     float calculateSum(){
-        for (InvoiceItem item : mItems){
-            mSum += item.getAmount()
+        for (InvoiceItem item : items){
+            sum += item.getAmount()
         }
-        return mSum
+        return sum
     }
 
     void check(){

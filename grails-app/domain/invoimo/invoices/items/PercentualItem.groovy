@@ -2,7 +2,7 @@ package invoimo.invoices.items
 
 class PercentualItem extends InvoiceItem{
 
-    final private static int mDigits = 2;
+    final private static int digits = 2;
 
     static constraints = {
     }

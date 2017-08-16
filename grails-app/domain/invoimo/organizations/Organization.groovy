@@ -2,34 +2,34 @@ package invoimo.organizations
 
 class Organization {
 
-    private Address mAddress
-    private String mContactPerson
-    private String mCostCentre
+    private Address address
+    private String contactPerson
+    private String costCentre
 
     static constraints = {
     }
 
     Address getAddress() {
-        return mAddress
+        return address
     }
 
     String getContactPerson() {
-        return mContactPerson
+        return contactPerson
     }
 
     String getCostCentre() {
-        return mCostCentre
+        return costCentre
     }
 
     void setContactPerson(String aContactPerson) {
-        this.mContactPerson = aContactPerson
+        this.contactPerson = aContactPerson
     }
 
     void setCostCentre(String aCostCentre) {
-        this.mCostCentre = aCostCentre
+        this.costCentre = aCostCentre
     }
 
     void setAddress(Address aAddress){
-        mAddress = aAddress
+        address = aAddress
     }
 }
