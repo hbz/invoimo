@@ -12,7 +12,6 @@ class License {
         license_id(nullable:false)
         licenser(size:3..100)
         startDate(nullable:false)
-        mEndDate(min:mStartDate++)
     }
 
     Date getStartDate() {
