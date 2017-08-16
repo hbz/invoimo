@@ -2,17 +2,33 @@ package invoimo
 
 class License {
 
-    private String mId
+    private String license_id
+    private String licenser
 
-    private Date mStartDate
-    private Date mEndDate
-
-    private String mLicenser
+    private Date startDate
+    private Date endDate
 
     static constraints = {
-        mId(nullable:false)
-        mStartDate(nullable:false)
+        license_id(nullable:false)
+        licenser(size:3..100)
+        startDate(nullable:false)
         mEndDate(min:mStartDate++)
-        mLicenser(size:3..100)
     }
+
+    Date getStartDate() {
+        return startDate
+    }
+
+    void setStartDate(Date startDate) {
+        this.startDate = startDate
+    }
+
+    Date getEndDate() {
+        return endDate
+    }
+
+    void setEndDate(Date endDate) {
+        this.endDate = endDate
+    }
+
 }
