@@ -40,7 +40,7 @@ class Invoice {
     }
 
     boolean isFinalized() {
-        return finalizeDate != null;
+        return finalizeDate != null
     }
 
     boolean setFinalized() {

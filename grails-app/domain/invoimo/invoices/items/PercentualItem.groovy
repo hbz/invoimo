@@ -13,10 +13,10 @@ class PercentualItem extends InvoiceItem{
 
     PercentualItem(final float aBaseAmount, final float aPercentage,
                           final Currency aCurrency, final float aCount){
-        super(round(aBaseAmount, aPercentage), aCurrency, aCount, aBaseAmount * aPercentage < 0.0)
+        super(round(aBaseAmount, aPercentage), aCurrency, aCount, aBaseAmount * aPercentage < 0.0f)
     }
 
     private static float round(final float aBaseAmount, final float aPercentage){
-        return (float) (Math.round(aBaseAmount * aPercentage * 100.0) / 100.0)
+        return (float) (Math.round(aBaseAmount * aPercentage * 100.0f) / 100.0f)
     }
 }

@@ -6,7 +6,7 @@ class FeeItem extends InvoiceItem{
     }
 
     FeeItem(final float aAmount, final Currency aCurrency) {
-        this(aAmount, aCurrency, 1)
+        this(aAmount, aCurrency, 1f)
     }
 
     FeeItem(final float aAmount, final Currency aCurrency, final float aCount) {
