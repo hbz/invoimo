@@ -1,19 +1,20 @@
 <!doctype html>
 <html lang="en" class="no-js">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
         <g:layoutTitle default="Grails"/>
     </title>
+    <r:layoutResources/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
     <asset:stylesheet src="application.css"/>
-
+    <r:require modules="bootstrap"/>
     <g:layoutHead/>
 </head>
-<body>
 
+<body>
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -38,13 +39,13 @@
     </div>
 
     <g:layoutBody/>
+    <r:layoutResources/>
 
     <div class="footer" role="contentinfo"></div>
 
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
-
     <asset:javascript src="application.js"/>
 
 </body>
