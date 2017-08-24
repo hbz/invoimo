@@ -17,7 +17,7 @@ class InvoiceItem {
 
     static constraints = {
         amount(min:0.0f)
-        num(min:0.0f)
+        // num(min:0.0f)
         description(size:3..100)
     }
 
