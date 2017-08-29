@@ -2,21 +2,14 @@ package invoimo.organizations
 
 import invoimo.helpers.SettingsChecker
 
-class Library {
+class Library extends Organization {
 
     private String isil
     private String dbsId
 
-    static constraints = {
-        isil(nullable:false)
-        dbsId(nullable:false)
-    }
-
     // TODO: libraries without isil AND dbsid? (foreign?)
+    static constraints = {
 
-    Library (String aIsil, String aDbsId){
-        isil = aIsil
-        dbsId = aDbsId
     }
 
     void setIsil(String aIsil){
