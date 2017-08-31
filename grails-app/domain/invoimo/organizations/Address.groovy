@@ -14,7 +14,8 @@ class Address {
 
     @Override
     String toString() {
-        StringBuilder result = new StringBuilder(line1)
+        StringBuilder result = new StringBuilder()
+        result.append(line1)
         if (line2){
             result.append(", ").append(line2)
         }
