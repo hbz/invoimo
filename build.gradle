@@ -11,7 +11,7 @@ buildscript {
 }
 
 version "0.1"
-group "invoimo"
+group "com.github.hbz.invoimo"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -19,6 +19,7 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
+apply plugin: 'maven'
 
 repositories {
     mavenLocal()
