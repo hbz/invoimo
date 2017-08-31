@@ -19,6 +19,7 @@ class InvoiceItem {
         amount(min:0.0f)
         // num(min:0.0f)
         description(size:3..100)
+        invoice nullable: true
     }
 
     protected InvoiceItem(final float aAmount, final Currency aCurrency) {
