@@ -1,7 +1,7 @@
 package invoimo.invoices.items
 
 import static org.springframework.http.HttpStatus.*
-import grails.gorm.transactions.Transactional
+import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class LicenseItemController {

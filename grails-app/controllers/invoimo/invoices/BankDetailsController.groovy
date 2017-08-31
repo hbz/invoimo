@@ -4,17 +4,17 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class BankingInfoController {
+class BankDetailsController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond BankDetails.list(params), model:[bankingInfoCount: BankDetails.count()]
+        respond BankDetails.list(params), model:[bankDetailsCount: BankDetails.count()]
     }
 
-    def show(BankDetails bankingInfo) {
-        respond bankingInfo
+    def show(BankDetails bankDetails) {
+        respond bankDetails
     }
 
     def create() {
@@ -22,73 +22,73 @@ class BankingInfoController {
     }
 
     @Transactional
-    def save(BankDetails bankingInfo) {
-        if (bankingInfo == null) {
+    def save(BankDetails bankDetails) {
+        if (bankDetails == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (bankingInfo.hasErrors()) {
+        if (bankDetails.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond bankingInfo.errors, view:'create'
+            respond bankDetails.errors, view:'create'
             return
         }
 
-        bankingInfo.save flush:true
+        bankDetails.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'bankDetails.label', default: 'BankDetails'), bankingInfo.id])
-                redirect bankingInfo
+                flash.message = message(code: 'default.created.message', args: [message(code: 'bankDetails.label', default: 'BankDetails'), bankDetails.id])
+                redirect bankDetails
             }
-            '*' { respond bankingInfo, [status: CREATED] }
+            '*' { respond bankDetails, [status: CREATED] }
         }
     }
 
-    def edit(BankDetails bankingInfo) {
-        respond bankingInfo
+    def edit(BankDetails bankDetails) {
+        respond bankDetails
     }
 
     @Transactional
-    def update(BankDetails bankingInfo) {
-        if (bankingInfo == null) {
+    def update(BankDetails bankDetails) {
+        if (bankDetails == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (bankingInfo.hasErrors()) {
+        if (bankDetails.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond bankingInfo.errors, view:'edit'
+            respond bankDetails.errors, view:'edit'
             return
         }
 
-        bankingInfo.save flush:true
+        bankDetails.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'bankDetails.label', default: 'BankDetails'), bankingInfo.id])
-                redirect bankingInfo
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'bankDetails.label', default: 'BankDetails'), bankDetails.id])
+                redirect bankDetails
             }
-            '*'{ respond bankingInfo, [status: OK] }
+            '*'{ respond bankDetails, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(BankDetails bankingInfo) {
+    def delete(BankDetails bankDetails) {
 
-        if (bankingInfo == null) {
+        if (bankDetails == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        bankingInfo.delete flush:true
+        bankDetails.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'bankDetails.label', default: 'BankDetails'), bankingInfo.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'bankDetails.label', default: 'BankDetails'), bankDetails.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

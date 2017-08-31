@@ -6,13 +6,13 @@ class InvoiceItem {
 
     final private Currency currency
     final private float amount
-    private float num
-    private String description
-    private boolean isDiscount = false
-    private boolean isTaxable = false
-    private float taxRate
-    private Date progressDate
-    private Date finalizeDate
+    float num
+    String description
+    boolean isDiscount = false
+    boolean isTaxable = false
+    float taxRate
+    Date progressDate
+    Date finalizeDate
     static belongsTo=[invoice:Invoice]
 
     static constraints = {

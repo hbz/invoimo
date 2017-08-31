@@ -1,11 +1,11 @@
-package invoimo.invoices
+package invoimo
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(BankDetailsController)
-@Mock(BankDetails)
-class BankDetailsControllerSpec extends Specification {
+@TestFor(LicenseController)
+@Mock(License)
+class LicenseControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class BankDetailsControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.bankDetailsList
-            model.bankDetailsCount == 0
+            !model.licenseList
+            model.licenseCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class BankDetailsControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.bankDetails!= null
+            model.license!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class BankDetailsControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def bankDetails = new BankDetails()
-            bankDetails.validate()
-            controller.save(bankDetails)
+            def license = new License()
+            license.validate()
+            controller.save(license)
 
         then:"The create view is rendered again with the correct model"
-            model.bankDetails!= null
+            model.license!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            bankDetails = new BankDetails(params)
+            license = new License(params)
 
-            controller.save(bankDetails)
+            controller.save(license)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/bankDetails/show/1'
+            response.redirectedUrl == '/license/show/1'
             controller.flash.message != null
-            BankDetails.count() == 1
+            License.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class BankDetailsControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def bankDetails = new BankDetails(params)
-            controller.show(bankDetails)
+            def license = new License(params)
+            controller.show(license)
 
         then:"A model is populated containing the domain instance"
-            model.bankDetails == bankDetails
+            model.license == license
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class BankDetailsControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def bankDetails = new BankDetails(params)
-            controller.edit(bankDetails)
+            def license = new License(params)
+            controller.edit(license)
 
         then:"A model is populated containing the domain instance"
-            model.bankDetails == bankDetails
+            model.license == license
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class BankDetailsControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/bankDetails/index'
+            response.redirectedUrl == '/license/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def bankDetails = new BankDetails()
-            bankDetails.validate()
-            controller.update(bankDetails)
+            def license = new License()
+            license.validate()
+            controller.update(license)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.bankDetails == bankDetails
+            model.license == license
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            bankDetails = new BankDetails(params).save(flush: true)
-            controller.update(bankDetails)
+            license = new License(params).save(flush: true)
+            controller.update(license)
 
         then:"A redirect is issued to the show action"
-            bankDetails != null
-            response.redirectedUrl == "/bankDetails/show/$bankDetails.id"
+            license != null
+            response.redirectedUrl == "/license/show/$license.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class BankDetailsControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/bankDetails/index'
+            response.redirectedUrl == '/license/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def bankDetails = new BankDetails(params).save(flush: true)
+            def license = new License(params).save(flush: true)
 
         then:"It exists"
-            BankDetails.count() == 1
+            License.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(bankDetails)
+            controller.delete(license)
 
         then:"The instance is deleted"
-            BankDetails.count() == 0
-            response.redirectedUrl == '/bankDetails/index'
+            License.count() == 0
+            response.redirectedUrl == '/license/index'
             flash.message != null
     }
 }

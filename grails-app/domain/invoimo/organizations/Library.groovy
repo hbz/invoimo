@@ -4,8 +4,8 @@ import invoimo.helpers.SettingsChecker
 
 class Library extends Organization {
 
-    private String isil
-    private String dbsId
+    String isil
+    String dbsId
 
     // TODO: libraries without isil AND dbsid? (foreign?)
     static constraints = {

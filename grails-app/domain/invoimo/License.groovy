@@ -2,11 +2,11 @@ package invoimo
 
 class License {
 
-    private String license_id
-    private String licenser
+    String license_id
+    String licenser
 
-    private Date startDate
-    private Date endDate
+    Date startDate
+    Date endDate
 
     static constraints = {
         license_id(nullable:false)
@@ -15,22 +15,6 @@ class License {
         endDate(validator: {
             !endDate.before(startDate)
         })
-    }
-
-    Date getStartDate() {
-        return startDate
-    }
-
-    void setStartDate(Date startDate) {
-        this.startDate = startDate
-    }
-
-    Date getEndDate() {
-        return endDate
-    }
-
-    void setEndDate(Date endDate) {
-        this.endDate = endDate
     }
 
 }

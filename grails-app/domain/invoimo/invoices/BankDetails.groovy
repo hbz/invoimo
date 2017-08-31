@@ -1,6 +1,6 @@
 package invoimo.invoices
 
-class BankingInfo {
+class BankDetails {
 
     static constraints = {
     }

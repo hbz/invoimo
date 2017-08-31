@@ -5,26 +5,21 @@ import invoimo.organizations.Organization
 
 class Invoice {
 
-    private Organization issuer
-    private Organization recipient
-    private BankingInfo bankingInfo
+    Organization issuer
+    Organization recipient
+    BankDetails bankDetails
 
     static hasMany=[items:InvoiceItem, notes:String]
-    private float sum
+    float sum = 0.0f
 
-    private InvoiceStatus status
-    private Currency currency
-    private Date maturity
+    InvoiceStatus status
+    Currency currency
+    Date maturity
 
-    private Date progressDate
-    private Date finalizeDate
+    Date progressDate = new Date()
+    Date finalizeDate
 
     static constraints = {
-    }
-
-    protected Invoice(){
-        progressDate = new Date()
-        sum = 0.0f
     }
 
     enum InvoiceType{
@@ -33,10 +28,6 @@ class Invoice {
         CANCELLATION,
         PARTIAL_INVOICE,
         RETRANSFER
-    }
-
-    InvoiceStatus getStatus() {
-        return status;
     }
 
     boolean isFinalized() {
@@ -52,14 +43,6 @@ class Invoice {
             item.setFinalized()
         }
         return true
-    }
-
-    Date getProgressDate(){
-        return progressDate
-    }
-
-    Date getFinalizeDate(){
-        return finalizeDate
     }
 
     void addItem(InvoiceItem aInvoiceItem){

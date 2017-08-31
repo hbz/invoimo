@@ -1,12 +1,10 @@
 package invoimo.organizations
 
 import static org.springframework.http.HttpStatus.*
-import grails.gorm.transactions.Transactional
+import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class LibraryController {
-
-    static scaffold = Library
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 

@@ -2,7 +2,7 @@ package invoimo.invoices.items
 
 class ObjectItem extends InvoiceItem{
 
-    private String name
+    String name
 
     static constraints = {
         name(nullable:false, size:3..100)

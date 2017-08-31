@@ -3,7 +3,7 @@ package invoimo.invoices
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class BankingInfoSpec extends Specification implements DomainUnitTest<BankingInfo> {
+class BankDetailsSpec extends Specification implements DomainUnitTest<BankDetails> {
 
     def setup() {
     }
