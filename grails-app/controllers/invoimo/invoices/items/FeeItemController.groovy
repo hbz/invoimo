@@ -3,7 +3,7 @@ package invoimo.invoices.items
 import grails.gorm.transactions.Transactional
 import static org.springframework.http.HttpStatus.*
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class FeeItemController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

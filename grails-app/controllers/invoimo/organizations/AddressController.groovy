@@ -3,7 +3,7 @@ package invoimo.organizations
 import static org.springframework.http.HttpStatus.*
 import grails.gorm.transactions.Transactional
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class AddressController {
 
     static scaffold = Address
