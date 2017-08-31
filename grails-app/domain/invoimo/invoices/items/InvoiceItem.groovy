@@ -17,7 +17,9 @@ class InvoiceItem {
 
     static constraints = {
         amount(min:0.0f)
-        // num(min:0.0f)
+        num(validator:{value ->
+            return value > 0
+        })
         description(size:3..100)
         invoice nullable: true
     }
