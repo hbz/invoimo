@@ -9,13 +9,20 @@ class License {
     Date endDate
 
     static constraints = {
-        license_id(nullable:false)
         licenser(size:3..100)
-        startDate(nullable:false)
         endDate(validator:{
             value, reference ->
                 return !(value.before(reference.startDate))
         })
     }
 
+    @Override
+    String toString() {
+        StringBuilder result = new StringBuilder()
+        result.append(licenser)
+        result.append(", ").append(startDate)
+        result.append(", ").append(endDate)
+        result.append(" (").append(license_id).append(")")
+        return result.toString()
+    }
 }
