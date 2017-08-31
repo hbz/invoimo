@@ -5,6 +5,7 @@ import invoimo.organizations.Organization
 
 class Invoice {
 
+    String identifier
     Organization issuer
     Organization recipient
     BankDetails bankDetails
@@ -20,6 +21,7 @@ class Invoice {
     Date finalizeDate
 
     static constraints = {
+        identifier unique: true
     }
 
     enum InvoiceType{

@@ -9,7 +9,8 @@ class Library extends Organization {
 
     // TODO: libraries without isil AND dbsid? (foreign?)
     static constraints = {
-
+        isil unique: true, nullable: true
+        dbsId unique: true, nullable: true
     }
 
     void setIsil(String aIsil){

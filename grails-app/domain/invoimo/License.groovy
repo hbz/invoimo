@@ -9,11 +9,12 @@ class License {
     Date endDate
 
     static constraints = {
-        licenser(size:3..100)
-        endDate(validator:{
+        license_id unique: true
+        licenser size: 3..100
+        endDate validator:{
             value, reference ->
                 return !(value.before(reference.startDate))
-        })
+        }
     }
 
     @Override
