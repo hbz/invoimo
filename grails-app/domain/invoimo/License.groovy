@@ -12,8 +12,9 @@ class License {
         license_id(nullable:false)
         licenser(size:3..100)
         startDate(nullable:false)
-        endDate(validator: {
-            !endDate.before(startDate)
+        endDate(validator:{
+            value, reference ->
+                return !(value.before(reference.startDate))
         })
     }
 
